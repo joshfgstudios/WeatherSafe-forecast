@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		031A8E1C1C8E94D900DEDAB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A8E1B1C8E94D900DEDAB0 /* Constants.swift */; };
+		031A8E241C8E985100DEDAB0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031A8E231C8E985100DEDAB0 /* Weather.swift */; };
 		032BB79E1C8E55ED00850EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BB79D1C8E55ED00850EC9 /* AppDelegate.swift */; };
 		032BB7A01C8E55ED00850EC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BB79F1C8E55ED00850EC9 /* ViewController.swift */; };
 		032BB7A31C8E55ED00850EC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032BB7A11C8E55ED00850EC9 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		031A8E1B1C8E94D900DEDAB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		031A8E231C8E985100DEDAB0 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		032BB79A1C8E55ED00850EC9 /* WeatherSafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherSafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		032BB79D1C8E55ED00850EC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		032BB79F1C8E55ED00850EC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				031A8E1B1C8E94D900DEDAB0 /* Constants.swift */,
+				031A8E231C8E985100DEDAB0 /* Weather.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				031A8E241C8E985100DEDAB0 /* Weather.swift in Sources */,
 				032BB7A01C8E55ED00850EC9 /* ViewController.swift in Sources */,
 				032BB79E1C8E55ED00850EC9 /* AppDelegate.swift in Sources */,
 				031A8E1C1C8E94D900DEDAB0 /* Constants.swift in Sources */,

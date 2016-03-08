@@ -11,3 +11,5 @@ import Foundation
 let URL_BASE = "https://api.forecast.io/forecast/"
 let API_KEY = "a8b6928c075cd215f83c2490cc4e766a/"
 let UNITS_CELSIUS = "?units=si"
+
+typealias DownloadComplete = () -> ()

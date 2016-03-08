@@ -11,7 +11,6 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    //Comment to test out branches
     //Outlets
     //------------
     @IBOutlet weak var lblCityName: UILabel!
@@ -23,6 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var currentLocation: CLLocation?
     var cityName: String?
     var countryName: String?
+    
+    var weather: Weather!
     
     
     //Functions
@@ -61,11 +62,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateUI() {
-        getCityName()
+        getCityDetails()
     }
     
-    func getCityName() {
+    func getCityDetails() {
         currentLocation = locationManager.location
+        weather = Weather()
+        weather.latitude = (currentLocation?.coordinate.latitude)!
+        weather.longitude = (currentLocation?.coordinate.longitude)!
+        weather.setRequestURL()
+        
         geoCoder.reverseGeocodeLocation(currentLocation!) { (placemarks, error) -> Void in
             var placeMark: CLPlacemark?
             placeMark = placemarks?[0]
