@@ -19,6 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //------------
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
+    
     var currentLocation: CLLocation?
     var cityName: String?
     var countryName: String?
