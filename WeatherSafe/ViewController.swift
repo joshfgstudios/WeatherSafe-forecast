@@ -76,7 +76,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.lblCityName.text = "\(self.cityName!), \(self.countryName!)"
                 }
             }
-            
         }
     }
 
