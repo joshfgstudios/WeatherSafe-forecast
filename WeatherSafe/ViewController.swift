@@ -11,6 +11,7 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
+    //Comment to test out branches
     //Outlets
     //------------
     @IBOutlet weak var lblCityName: UILabel!
