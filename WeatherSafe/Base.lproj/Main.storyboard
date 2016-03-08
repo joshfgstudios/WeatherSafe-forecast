@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -40,20 +41,47 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnC-N8-bwD">
+                                <rect key="frame" x="512" y="364" width="6" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXe-23-iKf">
+                                <rect key="frame" x="512" y="468" width="6" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyk-l3-ly7">
+                                <rect key="frame" x="512" y="415" width="6" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="QXe-23-iKf" secondAttribute="trailing" constant="62" id="Cuy-gN-vWV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qyk-l3-ly7" secondAttribute="trailing" constant="62" id="EeQ-On-pAS"/>
+                            <constraint firstItem="Qyk-l3-ly7" firstAttribute="top" secondItem="HnC-N8-bwD" secondAttribute="bottom" constant="27" id="LLJ-DY-ShQ"/>
                             <constraint firstItem="Fnt-dW-mm2" firstAttribute="top" secondItem="P3b-Uw-geH" secondAttribute="bottom" constant="8" id="T0v-gx-5pY"/>
                             <constraint firstItem="Fnt-dW-mm2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UFy-zg-7fa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QXe-23-iKf" secondAttribute="bottom" constant="108" id="ZXi-np-fkL"/>
                             <constraint firstItem="P3b-Uw-geH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eCS-kZ-Vn1"/>
                             <constraint firstItem="Fnt-dW-mm2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iWj-m8-kB1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HnC-N8-bwD" secondAttribute="trailing" constant="62" id="jHq-gO-nBb"/>
+                            <constraint firstItem="QXe-23-iKf" firstAttribute="top" secondItem="Qyk-l3-ly7" secondAttribute="bottom" constant="29" id="my3-1C-gcY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lblCityName" destination="Fnt-dW-mm2" id="xsQ-ke-uIF"/>
                         <outlet property="lblCurrentTemp" destination="P3b-Uw-geH" id="r7e-yt-8ST"/>
+                        <outlet property="lblHumidity" destination="QXe-23-iKf" id="gMF-i8-STW"/>
+                        <outlet property="lblRainChance" destination="HnC-N8-bwD" id="9Du-5g-elf"/>
                         <outlet property="lblTempMax" destination="RzX-y0-2Wh" id="Ncu-il-1ub"/>
                         <outlet property="lblTempMin" destination="Hdt-e3-uVz" id="pV4-Rk-BBX"/>
+                        <outlet property="lblWindSpeed" destination="Qyk-l3-ly7" id="LxD-aF-lZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

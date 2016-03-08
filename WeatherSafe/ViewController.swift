@@ -17,6 +17,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblCurrentTemp: UILabel!
     @IBOutlet weak var lblTempMax: UILabel!
     @IBOutlet weak var lblTempMin: UILabel!
+    @IBOutlet weak var lblRainChance: UILabel!
+    @IBOutlet weak var lblWindSpeed: UILabel!
+    @IBOutlet weak var lblHumidity: UILabel!
     
     
     //Properties
@@ -74,6 +77,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblCurrentTemp.text = weather.currentTemp
         lblTempMax.text = weather.todayMax
         lblTempMin.text = weather.todayMin
+        lblRainChance.text = weather.rainProbability
+        lblWindSpeed.text = weather.windSpeed
+        lblHumidity.text = weather.humidity
     }
     
     func refreshData() {
