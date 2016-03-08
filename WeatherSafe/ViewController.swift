@@ -14,6 +14,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //Outlets
     //------------
     @IBOutlet weak var lblCityName: UILabel!
+    @IBOutlet weak var lblCurrentTemp: UILabel!
+    @IBOutlet weak var lblTempMax: UILabel!
+    @IBOutlet weak var lblTempMin: UILabel!
+    
     
     //Properties
     //------------
@@ -33,11 +37,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         locationManager.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         locationAuthStatus()
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+            //Present an alert to ask the user to update their settings
             let alert = UIAlertController(title: "Unable to access location", message: "We don't have permission to access your location, and so we can't provide you with local weather data.  Please enable us to use your location via Settings to get weather information.", preferredStyle: UIAlertControllerStyle.Alert)
             let settingsAction = UIAlertAction(title: "Settings", style: .Default, handler: { (UIAlertAction) -> Void in
                 let settingsURL = NSURL(string: "prefs:root=LOCATION_SERVICES")
@@ -52,7 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             presentViewController(alert, animated: true, completion: nil)
         } else {
             dismissViewControllerAnimated(true, completion: nil)
-            updateUI()
+            refreshData()
         }
     }
     
@@ -63,10 +71,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateUI() {
-        getCityDetails()
+        lblCurrentTemp.text = weather.currentTemp
+        lblTempMax.text = weather.todayMax
+        lblTempMin.text = weather.todayMin
     }
     
-    func getCityDetails() {
+    func refreshData() {
         currentLocation = locationManager.location
         weather = Weather()
         weather.latitude = (currentLocation?.coordinate.latitude)!
@@ -85,6 +95,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+        
+        weather.downloadWeatherDetails { () -> () in
+            self.updateUI()
+        }
+        
     }
 
 
