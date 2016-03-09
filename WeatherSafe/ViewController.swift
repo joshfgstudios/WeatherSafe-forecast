@@ -167,9 +167,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
             }
         }
-        
-        print(weather.currentTemp)
-        
+                
         let backgroundLayer = gradientColours.gradientLayer
         backgroundLayer.removeFromSuperlayer()
         view.backgroundColor = UIColor.clearColor()
