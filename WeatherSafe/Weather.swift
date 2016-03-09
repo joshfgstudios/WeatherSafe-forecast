@@ -96,7 +96,15 @@ class Weather {
     }
     
     func setRequestURL() {
-        _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)\(UNITS_CELSIUS)"
+        if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
+            if units == "c" {
+                _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)\(UNITS_CELSIUS)"
+            } else if units == "f" {
+                _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)"
+            } else {
+                _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)\(UNITS_CELSIUS)"
+            }
+        }
     }
     
     func downloadWeatherDetails(complete: DownloadComplete) {
@@ -117,6 +125,10 @@ class Weather {
                     if let currentTemp = currentDict["temperature"] as? Int {
                         self._currentTemp = "\(currentTemp)"
                     }
+                    
+                    if let humidity = currentDict["humidity"] as? Double {
+                        self._humidity = "\(round(100 * humidity))"
+                    }
                 }
                 
                 //Daily values
@@ -136,10 +148,6 @@ class Weather {
                         
                         if let windSpeed = data[0]["windSpeed"] as? Double {
                             self._windSpeed = "\(windSpeed)"
-                        }
-                        
-                        if let humidity = data[0]["humidity"] as? Double {
-                            self._humidity = "\(round(100 * humidity))"
                         }
                     }
                 }
