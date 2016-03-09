@@ -77,9 +77,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblCurrentTemp.text = weather.currentTemp
         lblTempMax.text = weather.todayMax
         lblTempMin.text = weather.todayMin
-        lblRainChance.text = weather.rainProbability
-        lblWindSpeed.text = weather.windSpeed
-        lblHumidity.text = weather.humidity
+        lblRainChance.text = "\(weather.rainProbability) %"
+        lblWindSpeed.text = "\(weather.windSpeed) kph"
+        lblHumidity.text = "\(weather.humidity) %"
     }
     
     func refreshData() {
