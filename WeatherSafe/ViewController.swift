@@ -72,8 +72,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             presentViewController(alert, animated: true, completion: nil)
         } else {
-            dismissViewControllerAnimated(true, completion: nil)
-            refreshData()
+            dismissViewControllerAnimated(true, completion: {
+                self.refreshData()
+            })
         }
     }
     
