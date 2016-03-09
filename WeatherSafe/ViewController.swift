@@ -42,8 +42,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         locationAuthStatus()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            refreshData()
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -74,8 +80,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationAuthStatus() {
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
-        } else {
-            refreshData()
         }
     }
     
@@ -86,8 +90,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblRainChance.text = "\(weather.rainProbability) %"
         lblWindSpeed.text = "\(weather.windSpeed) kph"
         lblHumidity.text = "\(weather.humidity) %"
-        
-        //refreshBackgroundColours()
     }
     
     func refreshData() {
