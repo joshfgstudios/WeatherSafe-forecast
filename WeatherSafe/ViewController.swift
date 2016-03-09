@@ -46,6 +46,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationAuthStatus()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
             //Present an alert to ask the user to update their settings
@@ -70,6 +74,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationAuthStatus() {
         if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
+        } else {
+            refreshData()
         }
     }
     
