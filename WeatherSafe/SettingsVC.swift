@@ -28,6 +28,7 @@ class SettingsVC: UIViewController {
             } else if units == "f" {
                 switchUnits.on = false
             } else {
+                //default to celsius if can't find user defaults
                 switchUnits.on = true
             }
         }

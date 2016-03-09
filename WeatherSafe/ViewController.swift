@@ -32,7 +32,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var countryName: String?
     
     var weather: Weather!
-    
+    var gradientColours = GradientColour(top: warmTop, bottom: warmBottom)
     
     //Functions
     //------------
@@ -86,6 +86,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblRainChance.text = "\(weather.rainProbability) %"
         lblWindSpeed.text = "\(weather.windSpeed) kph"
         lblHumidity.text = "\(weather.humidity) %"
+        
+        //refreshBackgroundColours()
     }
     
     func refreshData() {
@@ -110,8 +112,64 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         weather.downloadWeatherDetails { () -> () in
             self.updateUI()
+            self.refreshBackgroundColours()
         }
         
+    }
+    
+    func refreshBackgroundColours() {
+        
+        if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
+            if units == "c" {
+                if Int(weather.currentTemp) >= 32 {
+                    gradientColours = GradientColour(top: hotTop, bottom: hotBottom)
+                } else if Int(weather.currentTemp) >= 20 {
+                    gradientColours = GradientColour(top: warmTop, bottom: warmBottom)
+                } else if Int(weather.currentTemp) >= 14 {
+                    gradientColours = GradientColour(top: coolTop, bottom: coolBottom)
+                } else {
+                    gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
+                }
+            } else if units == "f" {
+                if Int(weather.currentTemp) >= 88 {
+                    gradientColours = GradientColour(top: hotTop, bottom: hotBottom)
+                } else if Int(weather.currentTemp) >= 68 {
+                    gradientColours = GradientColour(top: warmTop, bottom: warmBottom)
+                } else if Int(weather.currentTemp) >= 57 {
+                    gradientColours = GradientColour(top: coolTop, bottom: coolBottom)
+                } else {
+                    gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
+                }
+            } else {
+                //default to celsius if problem with defaults
+                if Int(weather.currentTemp) >= 32 {
+                    gradientColours = GradientColour(top: hotTop, bottom: hotBottom)
+                } else if Int(weather.currentTemp) >= 20 {
+                    gradientColours = GradientColour(top: warmTop, bottom: warmBottom)
+                } else if Int(weather.currentTemp) >= 14 {
+                    gradientColours = GradientColour(top: coolTop, bottom: coolBottom)
+                } else {
+                    gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
+                }
+            }
+        } else {
+            //default to celsius if user defaults don't exist
+            if Int(weather.currentTemp) >= 32 {
+                gradientColours = GradientColour(top: hotTop, bottom: hotBottom)
+            } else if Int(weather.currentTemp) >= 20 {
+                gradientColours = GradientColour(top: warmTop, bottom: warmBottom)
+            } else if Int(weather.currentTemp) >= 14 {
+                gradientColours = GradientColour(top: coolTop, bottom: coolBottom)
+            } else {
+                gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
+            }
+        }
+        
+        let backgroundLayer = gradientColours.gradientLayer
+        backgroundLayer.removeFromSuperlayer()
+        view.backgroundColor = UIColor.clearColor()
+        backgroundLayer.frame = view.frame
+        view.layer.insertSublayer(backgroundLayer, atIndex: 0)
     }
 
 

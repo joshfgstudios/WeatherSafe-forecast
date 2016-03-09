@@ -105,7 +105,8 @@ class Weather {
                 _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)\(UNITS_CELSIUS)"
             }
         } else {
-                _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)\(UNITS_CELSIUS)"
+            //default to celsius if can't find user defaults
+            _weatherURL = "\(URL_BASE)\(API_KEY)\(_latitude),\(_longitude)\(UNITS_CELSIUS)"
         }
     }
     
