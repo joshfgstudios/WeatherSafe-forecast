@@ -40,6 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         locationManager.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "unitsChanged", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,8 +90,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblTempMax.text = weather.todayMax
         lblTempMin.text = weather.todayMin
         lblRainChance.text = "\(weather.rainProbability) %"
-        lblWindSpeed.text = "\(weather.windSpeed) kph"
         lblHumidity.text = "\(weather.humidity) %"
+        
+        if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
+            if units == "c" {
+                lblWindSpeed.text = "\(weather.windSpeed) kph"
+            } else if units == "f" {
+                lblWindSpeed.text = "\(weather.windSpeed) mph"
+            } else {
+                //default to celsius if problem with defaults
+                lblWindSpeed.text = "\(weather.windSpeed) kph"
+            }
+        } else {
+            //default to celsius if defaults don't exist
+            lblWindSpeed.text = "\(weather.windSpeed) kph"
+        }
     }
     
     func refreshData() {
@@ -167,8 +181,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
             }
         }
-        
-        print(weather.currentTemp)
         
         let backgroundLayer = gradientColours.gradientLayer
         backgroundLayer.removeFromSuperlayer()
