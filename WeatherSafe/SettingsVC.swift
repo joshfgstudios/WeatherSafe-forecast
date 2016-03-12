@@ -13,6 +13,9 @@ class SettingsVC: UIViewController {
     //Outlets
     //------------
     @IBOutlet weak var switchUnits: UISwitch!
+    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var bgTransp: UIView!
+
     
     //Properties
     //------------
@@ -21,6 +24,10 @@ class SettingsVC: UIViewController {
     //------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bgTransp.alpha = 0.0
+        bgView.layer.cornerRadius = bgView.frame.width / 24
+        bgView.clipsToBounds = true
         
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
             if units == "c" {
@@ -32,6 +39,12 @@ class SettingsVC: UIViewController {
                 switchUnits.on = true
             }
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+            self.bgTransp.alpha = 0.5
+            }, completion: nil)
     }
     
     //Actions

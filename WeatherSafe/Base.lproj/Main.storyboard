@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -116,17 +117,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UN0-9v-LfB">
-                                <rect key="frame" x="276" y="284" width="51" height="31"/>
-                                <color key="onTintColor" red="1" green="0.40647653639999998" blue="0.21181528459999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="onSwitchChanged:" destination="ZoK-eV-hy3" eventType="valueChanged" id="CXy-pW-FAz"/>
-                                </connections>
-                            </switch>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="um2-ZK-gXP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnz-U0-3hq">
+                                <rect key="frame" x="60" y="60" width="481" height="480"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UN0-9v-LfB">
+                                        <rect key="frame" x="216" y="225" width="51" height="31"/>
+                                        <color key="onTintColor" red="1" green="0.40647653639999998" blue="0.21181528459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="onSwitchChanged:" destination="ZoK-eV-hy3" eventType="valueChanged" id="CXy-pW-FAz"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UN0-9v-LfB" firstAttribute="centerX" secondItem="dnz-U0-3hq" secondAttribute="centerX" id="5Bl-AG-4HD"/>
+                                    <constraint firstItem="UN0-9v-LfB" firstAttribute="centerY" secondItem="dnz-U0-3hq" secondAttribute="centerY" id="Li4-X3-0VC"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nwl-ZO-E4x">
                                 <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="X">
-                                    <color key="titleColor" red="1" green="0.40647653639999998" blue="0.21181528459999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onClosePressed:" destination="ZoK-eV-hy3" eventType="touchUpInside" id="ZrU-Xl-w9Z"/>
@@ -135,17 +152,25 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UN0-9v-LfB" firstAttribute="centerX" secondItem="UDN-PR-vtk" secondAttribute="centerX" id="Xa5-51-y5J"/>
-                            <constraint firstItem="UN0-9v-LfB" firstAttribute="centerY" secondItem="UDN-PR-vtk" secondAttribute="centerY" id="i3m-YV-Jat"/>
+                            <constraint firstItem="um2-ZK-gXP" firstAttribute="top" secondItem="UDN-PR-vtk" secondAttribute="top" id="7T5-Jv-wt6"/>
+                            <constraint firstItem="dnz-U0-3hq" firstAttribute="height" secondItem="UDN-PR-vtk" secondAttribute="height" multiplier="0.8" id="91T-di-aF3"/>
+                            <constraint firstItem="dnz-U0-3hq" firstAttribute="centerX" secondItem="UDN-PR-vtk" secondAttribute="centerX" id="FCS-UE-4R1"/>
+                            <constraint firstItem="um2-ZK-gXP" firstAttribute="leading" secondItem="UDN-PR-vtk" secondAttribute="leading" id="IYH-3u-ACq"/>
+                            <constraint firstItem="dnz-U0-3hq" firstAttribute="width" secondItem="UDN-PR-vtk" secondAttribute="width" multiplier="0.8" constant="1" id="RLi-p2-TPn"/>
+                            <constraint firstAttribute="trailing" secondItem="um2-ZK-gXP" secondAttribute="trailing" id="Ukh-XR-keD"/>
+                            <constraint firstItem="dnz-U0-3hq" firstAttribute="centerY" secondItem="UDN-PR-vtk" secondAttribute="centerY" id="Urz-1I-1N5"/>
+                            <constraint firstItem="NHa-RP-PkK" firstAttribute="top" secondItem="um2-ZK-gXP" secondAttribute="bottom" id="xPl-nP-tDv"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgTransp" destination="um2-ZK-gXP" id="UzG-Xz-JKH"/>
+                        <outlet property="bgView" destination="dnz-U0-3hq" id="adF-sc-sl6"/>
                         <outlet property="switchUnits" destination="UN0-9v-LfB" id="gBk-pz-oxn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tS7-0l-NAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083" y="580"/>
+            <point key="canvasLocation" x="1061" y="580"/>
         </scene>
     </scenes>
 </document>
