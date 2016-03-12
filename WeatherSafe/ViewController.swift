@@ -181,11 +181,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 gradientColours = GradientColour(top: coldTop, bottom: coldBottom)
             }
         }
-<<<<<<< HEAD
-                
-=======
-        
->>>>>>> develop
+
         let backgroundLayer = gradientColours.gradientLayer
         backgroundLayer.removeFromSuperlayer()
         view.backgroundColor = UIColor.clearColor()
