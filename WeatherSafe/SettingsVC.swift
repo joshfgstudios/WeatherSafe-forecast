@@ -44,12 +44,15 @@ class SettingsVC: UIViewController {
         if switchUnits.on == true {
             NSUserDefaults.standardUserDefaults().setValue("c", forKey: "units")
             NSUserDefaults.standardUserDefaults().synchronize()
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "unitsChanged", object: nil))
         } else if switchUnits.on != true {
             NSUserDefaults.standardUserDefaults().setValue("f", forKey: "units")
             NSUserDefaults.standardUserDefaults().synchronize()
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "unitsChanged", object: nil))
         } else {
             NSUserDefaults.standardUserDefaults().setValue("c", forKey: "units")
             NSUserDefaults.standardUserDefaults().synchronize()
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "unitsChanged", object: nil))
         }
     }
 }
