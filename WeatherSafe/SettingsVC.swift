@@ -41,9 +41,15 @@ class SettingsVC: UIViewController {
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+    override func viewWillAppear(animated: Bool) {
+        UIView.animateWithDuration(0.3, delay: 0.27, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
             self.bgTransp.alpha = 0.5
+            }, completion: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+            self.bgTransp.alpha = 0.0
             }, completion: nil)
     }
     
