@@ -14,8 +14,10 @@ class SettingsVC: UIViewController {
     //------------
     @IBOutlet weak var switchUnits: UISwitch!
     @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var bgTransp: UIView!
-
+    @IBOutlet weak var lblUnits: UILabel!
+    @IBOutlet weak var constrXCloseButton: NSLayoutConstraint!
+    @IBOutlet weak var constrXSettingsWindow: NSLayoutConstraint!
+    @IBOutlet weak var btnClose: UIButton!
     
     //Properties
     //------------
@@ -25,9 +27,13 @@ class SettingsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bgTransp.alpha = 0.0
-        bgView.layer.cornerRadius = bgView.frame.width / 48
+        bgView.layer.cornerRadius = bgView.frame.width / 92
         bgView.clipsToBounds = true
+        
+        constrXSettingsWindow.constant -= 60
+        constrXCloseButton.constant += 60
+        bgView.alpha = 0.0
+        btnClose.alpha = 0.0
         
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
             if units == "c" {
@@ -41,21 +47,24 @@ class SettingsVC: UIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        UIView.animateWithDuration(0.3, delay: 0.35, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-            self.bgTransp.alpha = 0.5
-            }, completion: nil)
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        UIView.animateWithDuration(0.15, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-            self.bgTransp.alpha = 0.0
+    override func viewDidAppear(animated: Bool) {
+        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            self.constrXCloseButton.constant -= 60
+            self.constrXSettingsWindow.constant += 60
+            self.bgView.alpha = 1.0
+            self.btnClose.alpha = 1.0
+            self.view.layoutIfNeeded()
             }, completion: nil)
     }
     
     //Actions
     //------------
     @IBAction func onClosePressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            self.constrXCloseButton.constant += 60
+            self.constrXSettingsWindow.constant -= 60
+            self.view.layoutIfNeeded()
+            }, completion: nil)
         dismissViewControllerAnimated(true, completion: nil)
     }
 

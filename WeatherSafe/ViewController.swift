@@ -243,6 +243,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.lblCurrentTemp.alpha = 1.0
             self.lblCityName.alpha = 1.0
+            self.constrYCurrentTempLabel.constant -= self.view.bounds.height / 24
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1.0, delay: 0.3, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.lblTempMax.alpha = 1.0
             self.lblTempMin.alpha = 1.0
             self.lblRainChance.alpha = 1.0
@@ -253,7 +257,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.imgRainChance.alpha = 1.0
             self.imgWindSpeed.alpha = 1.0
             self.imgHumidity.alpha = 1.0
-            self.constrYCurrentTempLabel.constant -= self.view.bounds.height / 24
             self.constrXmaxMinStack.constant += 20
             self.constrXdayStats.constant += 20
             self.view.layoutIfNeeded()
@@ -269,7 +272,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         view.addSubview(circleView)
         circleView.animateCircle(0.8)
     }
-
 
 }
 
