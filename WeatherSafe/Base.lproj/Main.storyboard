@@ -24,20 +24,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCq-LT-ENK">
-                                <rect key="frame" x="20" y="20" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="thN-pL-VZY"/>
-                                    <constraint firstAttribute="width" constant="46" id="vtC-Ky-Hay"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
-                                <state key="normal" title="|||">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="ZoK-eV-hy3" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="tj9-0e-j1U"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ufp-6c-csi" userLabel="maxMin">
                                 <rect key="frame" x="40" y="382" width="72" height="76"/>
                                 <subviews>
@@ -180,6 +166,27 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCq-LT-ENK">
+                                <rect key="frame" x="20" y="28" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Xdq-gZ-MML"/>
+                                    <constraint firstAttribute="width" constant="40" id="gja-dm-QBh"/>
+                                    <constraint firstAttribute="height" constant="30" id="thN-pL-VZY"/>
+                                    <constraint firstAttribute="width" constant="46" id="vtC-Ky-Hay"/>
+                                </constraints>
+                                <state key="normal" image="menu">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="thN-pL-VZY"/>
+                                        <exclude reference="vtC-Ky-Hay"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="ZoK-eV-hy3" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="tj9-0e-j1U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.40647653639999998" blue="0.21181528459999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -196,7 +203,7 @@
                             <constraint firstItem="ufp-6c-csi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Zxq-TC-qgS"/>
                             <constraint firstItem="P3b-Uw-geH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eCS-kZ-Vn1"/>
                             <constraint firstItem="SCq-LT-ENK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eO5-g0-vXZ"/>
-                            <constraint firstItem="SCq-LT-ENK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="f2x-if-QSJ"/>
+                            <constraint firstItem="SCq-LT-ENK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="f2x-if-QSJ"/>
                             <constraint firstItem="Fnt-dW-mm2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iWj-m8-kB1"/>
                             <constraint firstItem="t71-r8-qxX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.4" id="ifG-fV-X1z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="t71-r8-qxX" secondAttribute="trailing" constant="20" id="xAA-yk-96E"/>
@@ -352,6 +359,7 @@
         <image name="close" width="150" height="150"/>
         <image name="humidity" width="150" height="150"/>
         <image name="indicator1" width="150" height="150"/>
+        <image name="menu" width="150" height="150"/>
         <image name="umbrella" width="150" height="150"/>
         <image name="windspeed" width="100" height="100"/>
     </resources>
