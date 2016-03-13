@@ -20,6 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblRainChance: UILabel!
     @IBOutlet weak var lblWindSpeed: UILabel!
     @IBOutlet weak var lblHumidity: UILabel!
+    @IBOutlet weak var activityIndicator: ActivityIndicator!
     
     
     //Properties
@@ -45,6 +46,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         locationAuthStatus()
+        
+        //Layout
+        lblCurrentTemp.alpha = 0.0
+        lblCityName.alpha = 0.0
+        lblTempMax.alpha = 0.0
+        lblTempMin.alpha = 0.0
+        lblRainChance.alpha = 0.0
+        lblWindSpeed.alpha = 0.0
+        lblHumidity.alpha = 0.0
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -108,6 +118,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func refreshData() {
+        activityIndicator.playLoadingAnimation()
+        
         currentLocation = locationManager.location
         weather = Weather()
         weather.latitude = (currentLocation?.coordinate.latitude)!
@@ -130,6 +142,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         weather.downloadWeatherDetails { () -> () in
             self.updateUI()
             self.refreshBackgroundColours()
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "loadingComplete", userInfo: nil, repeats: false)
         }
         
     }
@@ -187,6 +200,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         view.backgroundColor = UIColor.clearColor()
         backgroundLayer.frame = view.frame
         view.layer.insertSublayer(backgroundLayer, atIndex: 0)
+    }
+    
+    func loadingComplete() {
+        activityIndicator.stopLoadingAnimation()
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            self.lblCurrentTemp.alpha = 1.0
+            self.lblCityName.alpha = 1.0
+            self.lblTempMax.alpha = 1.0
+            self.lblTempMin.alpha = 1.0
+            self.lblRainChance.alpha = 1.0
+            self.lblWindSpeed.alpha = 1.0
+            self.lblHumidity.alpha = 1.0
+            }, completion: nil)
     }
 
 
