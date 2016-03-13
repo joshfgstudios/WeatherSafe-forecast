@@ -26,7 +26,7 @@ class SettingsVC: UIViewController {
         super.viewDidLoad()
         
         bgTransp.alpha = 0.0
-        bgView.layer.cornerRadius = bgView.frame.width / 24
+        bgView.layer.cornerRadius = bgView.frame.width / 48
         bgView.clipsToBounds = true
         
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
@@ -42,7 +42,7 @@ class SettingsVC: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        UIView.animateWithDuration(0.3, delay: 0.27, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, delay: 0.35, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
             self.bgTransp.alpha = 0.5
             }, completion: nil)
     }
