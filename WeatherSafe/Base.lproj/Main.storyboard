@@ -213,6 +213,8 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="qPd-3j-5rQ" id="32R-aO-t78"/>
+                        <outlet property="constrXdayStats" destination="xAA-yk-96E" id="BnB-Ir-ldY"/>
+                        <outlet property="constrXmaxMinStack" destination="Zxq-TC-qgS" id="0D5-sE-cus"/>
                         <outlet property="constrYCurrentTempLabel" destination="Lhy-Vv-T1K" id="xVF-Xo-jje"/>
                         <outlet property="imgHumidity" destination="OGC-qf-esz" id="xTu-sb-0qb"/>
                         <outlet property="imgMaxTemp" destination="H2H-ai-BHi" id="xpg-I6-dxU"/>

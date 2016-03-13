@@ -27,6 +27,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imgWindSpeed: UIImageView!
     @IBOutlet weak var imgHumidity: UIImageView!
     @IBOutlet weak var constrYCurrentTempLabel: NSLayoutConstraint!
+    @IBOutlet weak var constrXmaxMinStack: NSLayoutConstraint!
+    @IBOutlet weak var constrXdayStats: NSLayoutConstraint!
     
     
     //Properties
@@ -231,6 +233,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         imgHumidity.alpha = 0.0
         circleView.circleLayer.strokeEnd = 0.0
         constrYCurrentTempLabel.constant += view.bounds.height / 24
+        constrXmaxMinStack.constant -= 20
+        constrXdayStats.constant -= 20
     }
     
     func loadingComplete() {
@@ -250,6 +254,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.imgWindSpeed.alpha = 1.0
             self.imgHumidity.alpha = 1.0
             self.constrYCurrentTempLabel.constant -= self.view.bounds.height / 24
+            self.constrXmaxMinStack.constant += 20
+            self.constrXdayStats.constant += 20
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
