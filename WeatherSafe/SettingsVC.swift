@@ -19,9 +19,6 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var constrXSettingsWindow: NSLayoutConstraint!
     @IBOutlet weak var btnClose: UIButton!
     
-    //Properties
-    //------------
-    
     //Functions
     //------------
     override func viewDidLoad() {
@@ -38,11 +35,14 @@ class SettingsVC: UIViewController {
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
             if units == "c" {
                 switchUnits.on = true
+                lblUnits.text = "Units:  C"
             } else if units == "f" {
                 switchUnits.on = false
+                lblUnits.text = "Units:  F"
             } else {
                 //default to celsius if can't find user defaults
                 switchUnits.on = true
+                lblUnits.text = "Units:  C"
             }
         }
     }
