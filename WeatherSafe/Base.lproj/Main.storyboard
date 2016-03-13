@@ -213,6 +213,12 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="qPd-3j-5rQ" id="32R-aO-t78"/>
+                        <outlet property="constrYCurrentTempLabel" destination="Lhy-Vv-T1K" id="xVF-Xo-jje"/>
+                        <outlet property="imgHumidity" destination="OGC-qf-esz" id="xTu-sb-0qb"/>
+                        <outlet property="imgMaxTemp" destination="H2H-ai-BHi" id="xpg-I6-dxU"/>
+                        <outlet property="imgMinTemp" destination="1ut-JM-CBQ" id="V4S-sT-w1U"/>
+                        <outlet property="imgRainChance" destination="CjT-sh-aC3" id="wKB-Ce-NP8"/>
+                        <outlet property="imgWindSpeed" destination="u8s-3S-GhY" id="XBi-n3-PzS"/>
                         <outlet property="lblCityName" destination="Fnt-dW-mm2" id="xsQ-ke-uIF"/>
                         <outlet property="lblCurrentTemp" destination="P3b-Uw-geH" id="r7e-yt-8ST"/>
                         <outlet property="lblHumidity" destination="QXe-23-iKf" id="gMF-i8-STW"/>

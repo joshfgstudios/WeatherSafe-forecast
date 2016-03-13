@@ -21,13 +21,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblWindSpeed: UILabel!
     @IBOutlet weak var lblHumidity: UILabel!
     @IBOutlet weak var activityIndicator: ActivityIndicator!
+    @IBOutlet weak var imgMaxTemp: UIImageView!
+    @IBOutlet weak var imgMinTemp: UIImageView!
+    @IBOutlet weak var imgRainChance: UIImageView!
+    @IBOutlet weak var imgWindSpeed: UIImageView!
+    @IBOutlet weak var imgHumidity: UIImageView!
+    @IBOutlet weak var constrYCurrentTempLabel: NSLayoutConstraint!
     
     
     //Properties
     //------------
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
-    let circle = CircleView()
+    var circleView = CircleView()
     
     var currentLocation: CLLocation?
     var cityName: String?
@@ -218,6 +224,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblRainChance.alpha = 0.0
         lblWindSpeed.alpha = 0.0
         lblHumidity.alpha = 0.0
+        imgMaxTemp.alpha = 0.0
+        imgMinTemp.alpha = 0.0
+        imgRainChance.alpha = 0.0
+        imgWindSpeed.alpha = 0.0
+        imgHumidity.alpha = 0.0
+        circleView.circleLayer.strokeEnd = 0.0
+        constrYCurrentTempLabel.constant += view.bounds.height / 24
     }
     
     func loadingComplete() {
@@ -231,6 +244,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.lblRainChance.alpha = 1.0
             self.lblWindSpeed.alpha = 1.0
             self.lblHumidity.alpha = 1.0
+            self.imgMaxTemp.alpha = 1.0
+            self.imgMinTemp.alpha = 1.0
+            self.imgRainChance.alpha = 1.0
+            self.imgWindSpeed.alpha = 1.0
+            self.imgHumidity.alpha = 1.0
+            self.constrYCurrentTempLabel.constant -= self.view.bounds.height / 24
+            self.view.layoutIfNeeded()
             }, completion: nil)
     }
     
@@ -238,7 +258,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let circleHeight = CGFloat(view.frame.height / 2.5)
         let circleWidth = circleHeight
         
-        let circleView = CircleView(frame: CGRectMake((view.bounds.width / 2) - (circleWidth / 2), (view.bounds.height / 2.75) - (circleHeight / 2), circleWidth, circleHeight))
+        circleView = CircleView(frame: CGRectMake((view.bounds.width / 2) - (circleWidth / 2), (view.bounds.height / 2.75) - (circleHeight / 2), circleWidth, circleHeight))
         
         view.addSubview(circleView)
         circleView.animateCircle(0.8)
