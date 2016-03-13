@@ -27,6 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //------------
     let locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
+    let circle = CircleView()
     
     var currentLocation: CLLocation?
     var cityName: String?
@@ -46,15 +47,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(animated: Bool) {
         locationAuthStatus()
-        
-        //Layout
-        lblCurrentTemp.alpha = 0.0
-        lblCityName.alpha = 0.0
-        lblTempMax.alpha = 0.0
-        lblTempMin.alpha = 0.0
-        lblRainChance.alpha = 0.0
-        lblWindSpeed.alpha = 0.0
-        lblHumidity.alpha = 0.0
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -131,7 +123,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func refreshData() {
-        activityIndicator.playLoadingAnimation()
+        startLoading()
         
         currentLocation = locationManager.location
         weather = Weather()
@@ -215,8 +207,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         view.layer.insertSublayer(backgroundLayer, atIndex: 0)
     }
     
+    func startLoading() {
+        activityIndicator.playLoadingAnimation()
+        
+        //Layout
+        lblCurrentTemp.alpha = 0.0
+        lblCityName.alpha = 0.0
+        lblTempMax.alpha = 0.0
+        lblTempMin.alpha = 0.0
+        lblRainChance.alpha = 0.0
+        lblWindSpeed.alpha = 0.0
+        lblHumidity.alpha = 0.0
+    }
+    
     func loadingComplete() {
         activityIndicator.stopLoadingAnimation()
+        addCircleView()
         UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.lblCurrentTemp.alpha = 1.0
             self.lblCityName.alpha = 1.0
@@ -226,6 +232,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.lblWindSpeed.alpha = 1.0
             self.lblHumidity.alpha = 1.0
             }, completion: nil)
+    }
+    
+    func addCircleView() {
+        let circleHeight = CGFloat(view.frame.height / 2.5)
+        let circleWidth = circleHeight
+        
+        let circleView = CircleView(frame: CGRectMake((view.bounds.width / 2) - (circleWidth / 2), (view.bounds.height / 2.75) - (circleHeight / 2), circleWidth, circleHeight))
+        
+        view.addSubview(circleView)
+        circleView.animateCircle(0.8)
     }
 
 
