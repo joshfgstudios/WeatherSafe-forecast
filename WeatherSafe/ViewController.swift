@@ -96,11 +96,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateUI() {
-        lblCurrentTemp.text = weather.currentTemp
         lblTempMax.text = weather.todayMax
         lblTempMin.text = weather.todayMin
         lblRainChance.text = "\(weather.rainProbability) %"
         lblHumidity.text = "\(weather.humidity) %"
+        
+        if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
+            if units == "c" {
+                lblCurrentTemp.text = "\(weather.currentTemp) °C"
+            } else if units == "f" {
+                lblCurrentTemp.text = "\(weather.currentTemp) °F"
+            } else {
+                //default to celsius if problem with defaults
+                lblCurrentTemp.text = "\(weather.currentTemp) °C"
+            }
+        } else {
+            //default to celsius if defaults don't exist
+            lblCurrentTemp.text = "\(weather.currentTemp) °C"
+        }
         
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
             if units == "c" {
