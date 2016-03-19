@@ -22,6 +22,26 @@ class Weather {
     private var _windSpeed: String!
     private var _humidity: String!
     
+    private var _UNIXDay1: Double!
+    private var _day1Max: String!
+    private var _day1Min: String!
+    
+    private var _UNIXDay2: Double!
+    private var _day2Max: String!
+    private var _day2Min: String!
+    
+    private var _UNIXDay3: Double!
+    private var _day3Max: String!
+    private var _day3Min: String!
+    
+    private var _UNIXDay4: Double!
+    private var _day4Max: String!
+    private var _day4Min: String!
+    
+    private var _UNIXDay5: Double!
+    private var _day5Max: String!
+    private var _day5Min: String!
+    
     var currentTemp: String {
 
         if _currentTemp == nil {
@@ -95,6 +115,126 @@ class Weather {
         return _humidity
     }
     
+    var UNIXDay1: Double {
+        if _UNIXDay1 == nil {
+            _UNIXDay1 = 0
+        }
+        
+        return _UNIXDay1
+    }
+    
+    var day1Max: String {
+        if _day1Max == nil {
+            _day1Max = "-"
+        }
+        
+        return _day1Max
+    }
+    
+    var day1Min: String {
+        if _day1Min == nil {
+            _day1Min = "-"
+        }
+        
+        return _day1Min
+    }
+    
+    var UNIXDay2: Double {
+        if _UNIXDay2 == nil {
+            _UNIXDay2 = 0
+        }
+        
+        return _UNIXDay2
+    }
+    
+    var day2Max: String {
+        if _day2Max == nil {
+            _day2Max = "-"
+        }
+        
+        return _day2Max
+    }
+    
+    var day2Min: String {
+        if _day2Min == nil {
+            _day2Min = "-"
+        }
+        
+        return _day2Min
+    }
+    
+    var UNIXDay3: Double {
+        if _UNIXDay3 == nil {
+            _UNIXDay3 = 0
+        }
+        
+        return _UNIXDay3
+    }
+    
+    var day3Max: String {
+        if _day3Max == nil {
+            _day3Max = "-"
+        }
+        
+        return _day3Max
+    }
+    
+    var day3Min: String {
+        if _day3Min == nil {
+            _day3Min = "-"
+        }
+        
+        return _day3Min
+    }
+    
+    var UNIXDay4: Double {
+        if _UNIXDay4 == nil {
+            _UNIXDay4 = 0
+        }
+        
+        return _UNIXDay4
+    }
+    
+    var day4Max: String {
+        if _day4Max == nil {
+            _day4Max = "-"
+        }
+        
+        return _day4Max
+    }
+    
+    var day4Min: String {
+        if _day4Min == nil {
+            _day4Min = "-"
+        }
+        
+        return _day4Min
+    }
+    
+    var UNIXDay5: Double {
+        if _UNIXDay5 == nil {
+            _UNIXDay5 = 0
+        }
+        
+        return _UNIXDay5
+    }
+    
+    var day5Max: String {
+        if _day5Max == nil {
+            _day5Max = "-"
+        }
+        
+        return _day5Max
+    }
+    
+    var day5Min: String {
+        if _day5Min == nil {
+            _day5Min = "-"
+        }
+        
+        return _day5Min
+    }
+    
     func setRequestURL() {
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
             if units == "c" {
@@ -137,6 +277,7 @@ class Weather {
                 //Daily values
                 if let dailyDict = dict["daily"] as? Dictionary<String, AnyObject> {
                     if let data = dailyDict["data"] as? [Dictionary<String, AnyObject>] where data.count > 0 {
+                        //Today
                         if let todayMax = data[0]["temperatureMax"] as? Int {
                             self._todayMax = "\(todayMax)"
                         }
@@ -151,6 +292,67 @@ class Weather {
                         
                         if let windSpeed = data[0]["windSpeed"] as? Double {
                             self._windSpeed = "\(windSpeed)"
+                        }
+                        
+                        //Forecast
+                        if let day1Date = data[1]["time"] as? Double {
+                            self._UNIXDay1 = day1Date
+                        }
+                        
+                        if let day1Max = data[1]["temperatureMax"] as? Double {
+                            self._day1Max = "\(day1Max)"
+                        }
+                        
+                        if let day1Min = data[1]["temperatureMin"] as? Double {
+                            self._day1Min = "\(day1Min)"
+                        }
+                        
+                        if let day2Date = data[2]["time"] as? Double {
+                            self._UNIXDay2 = day2Date
+                        }
+                        
+                        if let day2Max = data[2]["temperatureMax"] as? Double {
+                            self._day2Max = "\(day2Max)"
+                        }
+                        
+                        if let day2Min = data[2]["temperatureMin"] as? Double {
+                            self._day2Min = "\(day2Min)"
+                        }
+                        
+                        if let day3Date = data[3]["time"] as? Double {
+                            self._UNIXDay3 = day3Date
+                        }
+                        
+                        if let day3Max = data[3]["temperatureMax"] as? Double {
+                            self._day3Max = "\(day3Max)"
+                        }
+                        
+                        if let day3Min = data[3]["temperatureMin"] as? Double {
+                            self._day3Min = "\(day3Min)"
+                        }
+                        
+                        if let day4Date = data[4]["time"] as? Double {
+                            self._UNIXDay4 = day4Date
+                        }
+                        
+                        if let day4Max = data[4]["temperatureMax"] as? Double {
+                            self._day4Max = "\(day4Max)"
+                        }
+                        
+                        if let day4Min = data[4]["temperatureMin"] as? Double {
+                            self._day4Min = "\(day4Min)"
+                        }
+                        
+                        if let day5Date = data[5]["time"] as? Double {
+                            self._UNIXDay5 = day5Date
+                        }
+                        
+                        if let day5Max = data[5]["temperatureMax"] as? Double {
+                            self._day5Max = "\(day5Max)"
+                        }
+                        
+                        if let day5Min = data[5]["temperatureMin"] as? Double {
+                            self._day5Min = "\(day5Min)"
                         }
                     }
                 }

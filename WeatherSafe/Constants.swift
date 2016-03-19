@@ -11,7 +11,7 @@ import UIKit
 
 let URL_BASE = "https://api.forecast.io/forecast/"
 let API_KEY = "a8b6928c075cd215f83c2490cc4e766a/"
-let UNITS_CELSIUS = "?units=si"
+let UNITS_CELSIUS = "?units=ca"
 
 //Colours
 let hotTop = UIColor(red: 250.0/255, green: 134.0/255, blue: 31.0/255, alpha: 1.0).CGColor
