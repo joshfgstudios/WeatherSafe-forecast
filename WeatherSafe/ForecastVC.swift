@@ -31,6 +31,13 @@ class ForecastVC: UIViewController {
     var weather: Weather?
     var gradientColour: GradientColour?
     
+    var day1 = NSDate()
+    var day2 = NSDate()
+    var day3 = NSDate()
+    var day4 = NSDate()
+    var day5 = NSDate()
+    
+    
     //Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +51,29 @@ class ForecastVC: UIViewController {
         backgroundLayer.frame = view.frame
         view.layer.insertSublayer(backgroundLayer, atIndex: 0)
         
-        lblDay1.text = "\(weather?.UNIXDay1)"
-        lblDay2.text = "\(weather?.UNIXDay2)"
-        lblDay3.text = "\(weather?.UNIXDay3)"
-        lblDay4.text = "\(weather?.UNIXDay4)"
-        lblDay5.text = "\(weather?.UNIXDay5)"
+        day1 = NSDate(timeIntervalSince1970: (weather?.UNIXDay1)!)
+        day2 = NSDate(timeIntervalSince1970: (weather?.UNIXDay2)!)
+        day3 = NSDate(timeIntervalSince1970: (weather?.UNIXDay3)!)
+        day4 = NSDate(timeIntervalSince1970: (weather?.UNIXDay4)!)
+        day5 = NSDate(timeIntervalSince1970: (weather?.UNIXDay5)!)
+        
+        lblDay1.text = "\(day1.dayOfWeek()!)"
+        lblDay2.text = "\(day2.dayOfWeek()!)"
+        lblDay3.text = "\(day3.dayOfWeek()!)"
+        lblDay4.text = "\(day4.dayOfWeek()!)"
+        lblDay5.text = "\(day5.dayOfWeek()!)"
+        
+        lblDay1Max.text = weather?.day1Max
+        lblDay2Max.text = weather?.day2Max
+        lblDay3Max.text = weather?.day3Max
+        lblDay4Max.text = weather?.day4Max
+        lblDay5Max.text = weather?.day5Max
+        
+        lblDay1Min.text = weather?.day1Min
+        lblDay2Min.text = weather?.day2Min
+        lblDay3Min.text = weather?.day3Min
+        lblDay4Min.text = weather?.day4Min
+        lblDay5Min.text = weather?.day5Min
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

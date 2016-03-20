@@ -30,7 +30,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var constrYCurrentTempLabel: NSLayoutConstraint!
     @IBOutlet weak var constrXmaxMinStack: NSLayoutConstraint!
     @IBOutlet weak var constrXdayStats: NSLayoutConstraint!
-    
+    @IBOutlet weak var btnSettings: UIButton!
+    @IBOutlet weak var btnForecast: UIButton!
     
     //Properties
     //------------
@@ -243,6 +244,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         imgRainChance.alpha = 0.0
         imgWindSpeed.alpha = 0.0
         imgHumidity.alpha = 0.0
+        btnSettings.alpha = 0.0
+        btnForecast.alpha = 0.0
         circleView.circleLayer.strokeEnd = 0.0
         constrYCurrentTempLabel.constant += view.bounds.height / 24
         constrXmaxMinStack.constant -= 20
@@ -270,6 +273,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.imgRainChance.alpha = 1.0
             self.imgWindSpeed.alpha = 1.0
             self.imgHumidity.alpha = 1.0
+            self.btnForecast.alpha = 1.0
+            self.btnSettings.alpha = 1.0
             self.constrXmaxMinStack.constant += 20
             self.constrXdayStats.constant += 20
             self.view.layoutIfNeeded()

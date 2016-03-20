@@ -16,6 +16,7 @@
 		032BB7A51C8E55ED00850EC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032BB7A41C8E55ED00850EC9 /* Assets.xcassets */; };
 		032BB7A81C8E55ED00850EC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 032BB7A61C8E55ED00850EC9 /* LaunchScreen.storyboard */; };
 		032D7BE11C9E5F2A00DB88B0 /* ForecastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D7BE01C9E5F2A00DB88B0 /* ForecastVC.swift */; };
+		032D7BE31C9E6BFF00DB88B0 /* GetDayFromDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032D7BE21C9E6BFF00DB88B0 /* GetDayFromDate.swift */; };
 		03498EEA1C8FDFD100CFC9B8 /* GradientColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03498EE91C8FDFD100CFC9B8 /* GradientColour.swift */; };
 		03B484711C95360A00DAED98 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B484701C95360A00DAED98 /* ActivityIndicator.swift */; };
 		03FC220F1C95432F00AE0B46 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC220E1C95432F00AE0B46 /* CircleView.swift */; };
@@ -34,6 +35,7 @@
 		032BB7A71C8E55ED00850EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		032BB7A91C8E55ED00850EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		032D7BE01C9E5F2A00DB88B0 /* ForecastVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastVC.swift; sourceTree = "<group>"; };
+		032D7BE21C9E6BFF00DB88B0 /* GetDayFromDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetDayFromDate.swift; sourceTree = "<group>"; };
 		03498EE91C8FDFD100CFC9B8 /* GradientColour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientColour.swift; sourceTree = "<group>"; };
 		03B484701C95360A00DAED98 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		03FC220E1C95432F00AE0B46 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		031A8E201C8E953F00DEDAB0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				032D7BE21C9E6BFF00DB88B0 /* GetDayFromDate.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				03B484711C95360A00DAED98 /* ActivityIndicator.swift in Sources */,
 				031A8E1C1C8E94D900DEDAB0 /* Constants.swift in Sources */,
 				03132AAD1C8FAFA60014933F /* SettingsVC.swift in Sources */,
+				032D7BE31C9E6BFF00DB88B0 /* GetDayFromDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

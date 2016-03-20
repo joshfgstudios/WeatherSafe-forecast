@@ -315,11 +315,11 @@ class Weather {
                             self._UNIXDay1 = day1Date
                         }
                         
-                        if let day1Max = data[1]["temperatureMax"] as? Double {
+                        if let day1Max = data[1]["temperatureMax"] as? Int {
                             self._day1Max = "\(day1Max)"
                         }
                         
-                        if let day1Min = data[1]["temperatureMin"] as? Double {
+                        if let day1Min = data[1]["temperatureMin"] as? Int {
                             self._day1Min = "\(day1Min)"
                         }
                         
@@ -327,11 +327,11 @@ class Weather {
                             self._UNIXDay2 = day2Date
                         }
                         
-                        if let day2Max = data[2]["temperatureMax"] as? Double {
+                        if let day2Max = data[2]["temperatureMax"] as? Int {
                             self._day2Max = "\(day2Max)"
                         }
                         
-                        if let day2Min = data[2]["temperatureMin"] as? Double {
+                        if let day2Min = data[2]["temperatureMin"] as? Int {
                             self._day2Min = "\(day2Min)"
                         }
                         
@@ -339,11 +339,11 @@ class Weather {
                             self._UNIXDay3 = day3Date
                         }
                         
-                        if let day3Max = data[3]["temperatureMax"] as? Double {
+                        if let day3Max = data[3]["temperatureMax"] as? Int {
                             self._day3Max = "\(day3Max)"
                         }
                         
-                        if let day3Min = data[3]["temperatureMin"] as? Double {
+                        if let day3Min = data[3]["temperatureMin"] as? Int {
                             self._day3Min = "\(day3Min)"
                         }
                         
@@ -351,11 +351,11 @@ class Weather {
                             self._UNIXDay4 = day4Date
                         }
                         
-                        if let day4Max = data[4]["temperatureMax"] as? Double {
+                        if let day4Max = data[4]["temperatureMax"] as? Int {
                             self._day4Max = "\(day4Max)"
                         }
                         
-                        if let day4Min = data[4]["temperatureMin"] as? Double {
+                        if let day4Min = data[4]["temperatureMin"] as? Int {
                             self._day4Min = "\(day4Min)"
                         }
                         
@@ -363,11 +363,11 @@ class Weather {
                             self._UNIXDay5 = day5Date
                         }
                         
-                        if let day5Max = data[5]["temperatureMax"] as? Double {
+                        if let day5Max = data[5]["temperatureMax"] as? Int {
                             self._day5Max = "\(day5Max)"
                         }
                         
-                        if let day5Min = data[5]["temperatureMin"] as? Double {
+                        if let day5Min = data[5]["temperatureMin"] as? Int {
                             self._day5Min = "\(day5Min)"
                         }
                     }
