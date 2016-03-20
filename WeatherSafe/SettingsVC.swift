@@ -57,6 +57,10 @@ class SettingsVC: UIViewController {
             }, completion: nil)
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     //Actions
     //------------
     @IBAction func onClosePressed(sender: AnyObject) {

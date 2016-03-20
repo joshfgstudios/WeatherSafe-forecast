@@ -20,6 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var lblRainChance: UILabel!
     @IBOutlet weak var lblWindSpeed: UILabel!
     @IBOutlet weak var lblHumidity: UILabel!
+    @IBOutlet weak var lblSummary: UILabel!
     @IBOutlet weak var activityIndicator: ActivityIndicator!
     @IBOutlet weak var imgMaxTemp: UIImageView!
     @IBOutlet weak var imgMinTemp: UIImageView!
@@ -51,6 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "unitsChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshBackgroundColours", name: "returningFromForecast", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -65,6 +67,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toForecast" {
+            if let forecastVC = segue.destinationViewController as? ForecastVC {
+                forecastVC.weather = weather
+                forecastVC.gradientColour = gradientColours
+            }
+        }
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -100,6 +111,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblTempMin.text = weather.todayMin
         lblRainChance.text = "\(weather.rainProbability) %"
         lblHumidity.text = "\(weather.humidity) %"
+        lblSummary.text = "\(weather.todaySummary)"
         
         if let units = NSUserDefaults.standardUserDefaults().valueForKey("units") as? String {
             if units == "c" {
@@ -132,7 +144,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func refreshData() {
         startLoading()
-        
         currentLocation = locationManager.location
         weather = Weather()
         weather.latitude = (currentLocation?.coordinate.latitude)!
@@ -209,8 +220,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         let backgroundLayer = gradientColours.gradientLayer
-        backgroundLayer.removeFromSuperlayer()
-        view.backgroundColor = UIColor.clearColor()
+        //backgroundLayer.removeFromSuperlayer()
+        //view.backgroundColor = UIColor.clearColor()
         backgroundLayer.frame = view.frame
         view.layer.insertSublayer(backgroundLayer, atIndex: 0)
     }
@@ -226,6 +237,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         lblRainChance.alpha = 0.0
         lblWindSpeed.alpha = 0.0
         lblHumidity.alpha = 0.0
+        lblSummary.alpha = 0.0
         imgMaxTemp.alpha = 0.0
         imgMinTemp.alpha = 0.0
         imgRainChance.alpha = 0.0
@@ -249,6 +261,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         UIView.animateWithDuration(1.0, delay: 0.3, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.lblTempMax.alpha = 1.0
             self.lblTempMin.alpha = 1.0
+            self.lblSummary.alpha = 1.0
             self.lblRainChance.alpha = 1.0
             self.lblWindSpeed.alpha = 1.0
             self.lblHumidity.alpha = 1.0

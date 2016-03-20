@@ -21,6 +21,7 @@ class Weather {
     private var _rainProbability: String!
     private var _windSpeed: String!
     private var _humidity: String!
+    private var _todaySummary: String!
     
     private var _UNIXDay1: Double!
     private var _day1Max: String!
@@ -113,6 +114,14 @@ class Weather {
         }
         
         return _humidity
+    }
+    
+    var todaySummary: String {
+        if _todaySummary == nil {
+            _todaySummary = "-"
+        }
+        
+        return _todaySummary
     }
     
     var UNIXDay1: Double {
@@ -271,6 +280,13 @@ class Weather {
                     
                     if let humidity = currentDict["humidity"] as? Double {
                         self._humidity = "\(round(100 * humidity))"
+                    }
+                }
+                
+                //Hourly - for the summary of the day
+                if let hourlyDict = dict["hourly"] as? Dictionary<String, AnyObject> {
+                    if let summary = hourlyDict["summary"] as? String {
+                        self._todaySummary = summary
                     }
                 }
                 
