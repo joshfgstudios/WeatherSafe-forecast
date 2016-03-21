@@ -51,6 +51,9 @@ class ForecastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let backGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "returnToMain")
+        backGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(backGestureRecognizer)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -198,11 +201,41 @@ class ForecastVC: UIViewController {
         default: imgDay5.image = UIImage(named: "partly-cloudy")
         }
     }
+    
+    func returnToMain() {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            self.constrLeadingStack.constant += 120
+            self.constrLeadingBack.constant += 120
+            self.lblDay1.alpha = 0.0
+            self.lblDay2.alpha = 0.0
+            self.lblDay3.alpha = 0.0
+            self.lblDay4.alpha = 0.0
+            self.lblDay5.alpha = 0.0
+            self.lblDay1Min.alpha = 0.0
+            self.lblDay2Min.alpha = 0.0
+            self.lblDay3Min.alpha = 0.0
+            self.lblDay4Min.alpha = 0.0
+            self.lblDay5Min.alpha = 0.0
+            self.lblDay1Max.alpha = 0.0
+            self.lblDay2Max.alpha = 0.0
+            self.lblDay3Max.alpha = 0.0
+            self.lblDay4Max.alpha = 0.0
+            self.lblDay5Max.alpha = 0.0
+            self.imgDay1.alpha = 0.0
+            self.imgDay2.alpha = 0.0
+            self.imgDay3.alpha = 0.0
+            self.imgDay4.alpha = 0.0
+            self.imgDay5.alpha = 0.0
+            self.btnBack.alpha = 0.0
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "returningFromForecast", object: nil))
+    }
 
     //Actions
     @IBAction func onBackPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "returningFromForecast", object: nil))
+        returnToMain()
     }
     
 }

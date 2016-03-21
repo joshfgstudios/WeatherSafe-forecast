@@ -46,6 +46,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var weather: Weather!
     var gradientColours = GradientColour(top: warmTop, bottom: warmBottom)
     
+    var canSwipe = false
+    
     //Functions
     //------------
     override func viewDidLoad() {
@@ -54,6 +56,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "unitsChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshBackgroundColours", name: "returningFromForecast", object: nil)
+        
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeToForecast")
+        swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeGestureRecognizer)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -229,6 +235,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func startLoading() {
         activityIndicator.playLoadingAnimation()
+        canSwipe = false
         
         //Layout
         lblCurrentTemp.alpha = 0.0
@@ -279,6 +286,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.constrXdayStats.constant += 20
             self.view.layoutIfNeeded()
             }, completion: nil)
+        
+        canSwipe = true
+    }
+    
+    func swipeToForecast() {
+        if canSwipe {
+            performSegueWithIdentifier("toForecast", sender: nil)
+        }
     }
     
     func addCircleView() {
