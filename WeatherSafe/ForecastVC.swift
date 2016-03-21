@@ -26,6 +26,15 @@ class ForecastVC: UIViewController {
     @IBOutlet weak var lblDay5: UILabel!
     @IBOutlet weak var lblDay5Max: UILabel!
     @IBOutlet weak var lblDay5Min: UILabel!
+    @IBOutlet weak var imgDay1: UIImageView!
+    @IBOutlet weak var imgDay2: UIImageView!
+    @IBOutlet weak var imgDay3: UIImageView!
+    @IBOutlet weak var imgDay4: UIImageView!
+    @IBOutlet weak var imgDay5: UIImageView!
+    @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var constrLeadingStack: NSLayoutConstraint!
+    @IBOutlet weak var constrLeadingBack: NSLayoutConstraint!
+
     
     //Properties
     var weather: Weather?
@@ -41,13 +50,12 @@ class ForecastVC: UIViewController {
     //Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func viewWillAppear(animated: Bool) {
         //Update UI
         let backgroundLayer = gradientColour!.gradientLayer
-        //view.backgroundColor = UIColor.clearColor()
         backgroundLayer.frame = view.frame
         view.layer.insertSublayer(backgroundLayer, atIndex: 0)
         
@@ -74,12 +82,121 @@ class ForecastVC: UIViewController {
         lblDay3Min.text = weather?.day3Min
         lblDay4Min.text = weather?.day4Min
         lblDay5Min.text = weather?.day5Min
+        
+        updateIcons()
+        
+        
+        constrLeadingStack.constant += 120
+        constrLeadingBack.constant += 120
+        lblDay1.alpha = 0.0
+        lblDay2.alpha = 0.0
+        lblDay3.alpha = 0.0
+        lblDay4.alpha = 0.0
+        lblDay5.alpha = 0.0
+        lblDay1Min.alpha = 0.0
+        lblDay2Min.alpha = 0.0
+        lblDay3Min.alpha = 0.0
+        lblDay4Min.alpha = 0.0
+        lblDay5Min.alpha = 0.0
+        lblDay1Max.alpha = 0.0
+        lblDay2Max.alpha = 0.0
+        lblDay3Max.alpha = 0.0
+        lblDay4Max.alpha = 0.0
+        lblDay5Max.alpha = 0.0
+        imgDay1.alpha = 0.0
+        imgDay2.alpha = 0.0
+        imgDay3.alpha = 0.0
+        imgDay4.alpha = 0.0
+        imgDay5.alpha = 0.0
+        btnBack.alpha = 0.0
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+            self.constrLeadingStack.constant -= 120
+            self.constrLeadingBack.constant -= 120
+            self.lblDay1.alpha = 1.0
+            self.lblDay2.alpha = 1.0
+            self.lblDay3.alpha = 1.0
+            self.lblDay4.alpha = 1.0
+            self.lblDay5.alpha = 1.0
+            self.lblDay1Min.alpha = 1.0
+            self.lblDay2Min.alpha = 1.0
+            self.lblDay3Min.alpha = 1.0
+            self.lblDay4Min.alpha = 1.0
+            self.lblDay5Min.alpha = 1.0
+            self.lblDay1Max.alpha = 1.0
+            self.lblDay2Max.alpha = 1.0
+            self.lblDay3Max.alpha = 1.0
+            self.lblDay4Max.alpha = 1.0
+            self.lblDay5Max.alpha = 1.0
+            self.imgDay1.alpha = 1.0
+            self.imgDay2.alpha = 1.0
+            self.imgDay3.alpha = 1.0
+            self.imgDay4.alpha = 1.0
+            self.imgDay5.alpha = 1.0
+            self.btnBack.alpha = 1.0
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+    
+    func updateIcons() {
+        switch weather?.day1Icon {
+            case "clear-day"?, "clear-night"?: imgDay1.image = UIImage(named: "sun")
+            case "partly-cloudy-day"?, "partly-cloudy-night"?: imgDay1.image = UIImage(named: "partly-cloudy")
+            case "rain"?: imgDay1.image = UIImage(named: "rain")
+            case "snow"?, "sleet"?: imgDay1.image = UIImage(named: "snow")
+            case "wind"?, "fog"?: imgDay1.image = UIImage(named: "fog")
+            case "cloudy"?: imgDay1.image = UIImage(named: "cloudy")
+        default: imgDay1.image = UIImage(named: "partly-cloudy")
+        }
+        
+        switch weather?.day2Icon {
+            case "clear-day"?, "clear-night"?: imgDay2.image = UIImage(named: "sun")
+            case "partly-cloudy-day"?, "partly-cloudy-night"?: imgDay2.image = UIImage(named: "partly-cloudy")
+            case "rain"?: imgDay2.image = UIImage(named: "rain")
+            case "snow"?, "sleet"?: imgDay2.image = UIImage(named: "snow")
+            case "wind"?, "fog"?: imgDay2.image = UIImage(named: "fog")
+            case "cloudy"?: imgDay2.image = UIImage(named: "cloudy")
+        default: imgDay2.image = UIImage(named: "partly-cloudy")
+        }
+        
+        switch weather?.day3Icon {
+            case "clear-day"?, "clear-night"?: imgDay3.image = UIImage(named: "sun")
+            case "partly-cloudy-day"?, "partly-cloudy-night"?: imgDay3.image = UIImage(named: "partly-cloudy")
+            case "rain"?: imgDay3.image = UIImage(named: "rain")
+            case "snow"?, "sleet"?: imgDay3.image = UIImage(named: "snow")
+            case "wind"?, "fog"?: imgDay3.image = UIImage(named: "fog")
+            case "cloudy"?: imgDay3.image = UIImage(named: "cloudy")
+        default: imgDay3.image = UIImage(named: "partly-cloudy")
+        }
+        
+        switch weather?.day4Icon {
+            case "clear-day"?, "clear-night"?: imgDay4.image = UIImage(named: "sun")
+            case "partly-cloudy-day"?, "partly-cloudy-night"?: imgDay4.image = UIImage(named: "partly-cloudy")
+            case "rain"?: imgDay4.image = UIImage(named: "rain")
+            case "snow"?, "sleet"?: imgDay4.image = UIImage(named: "snow")
+            case "wind"?, "fog"?: imgDay4.image = UIImage(named: "fog")
+            case "cloudy"?: imgDay4.image = UIImage(named: "cloudy")
+        default: imgDay4.image = UIImage(named: "partly-cloudy")
+        }
+        
+        switch weather?.day5Icon {
+            case "clear-day"?, "clear-night"?: imgDay5.image = UIImage(named: "sun")
+            case "partly-cloudy-day"?, "partly-cloudy-night"?: imgDay5.image = UIImage(named: "partly-cloudy")
+            case "rain"?: imgDay5.image = UIImage(named: "rain")
+            case "snow"?, "sleet"?: imgDay5.image = UIImage(named: "snow")
+            case "wind"?, "fog"?: imgDay5.image = UIImage(named: "fog")
+            case "cloudy"?: imgDay5.image = UIImage(named: "cloudy")
+        default: imgDay5.image = UIImage(named: "partly-cloudy")
+        }
+    }
 
+    //Actions
     @IBAction func onBackPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "returningFromForecast", object: nil))
