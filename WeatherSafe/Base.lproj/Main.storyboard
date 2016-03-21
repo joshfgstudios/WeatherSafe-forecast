@@ -278,10 +278,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GHz-mS-kc8" userLabel="days">
-                                <rect key="frame" x="20" y="100" width="560" height="480"/>
+                                <rect key="frame" x="20" y="82" width="560" height="498"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8L-0U-68g">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="91"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQ3-Xe-wbI">
                                                 <rect key="frame" x="8" y="40" width="65" height="47"/>
@@ -316,7 +316,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQY-ls-4ur">
-                                        <rect key="frame" x="0.0" y="97" width="560" height="91"/>
+                                        <rect key="frame" x="0.0" y="101" width="560" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvW-u2-6II">
                                                 <rect key="frame" x="8" y="40" width="65" height="47"/>
@@ -351,7 +351,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATO-oc-K8U">
-                                        <rect key="frame" x="0.0" y="194" width="560" height="92"/>
+                                        <rect key="frame" x="0.0" y="202" width="560" height="94"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-TD-4DA">
                                                 <rect key="frame" x="8" y="40" width="65" height="47"/>
@@ -386,7 +386,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bvx-5v-vG3">
-                                        <rect key="frame" x="0.0" y="292" width="560" height="91"/>
+                                        <rect key="frame" x="0.0" y="302" width="560" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7s-6I-ier">
                                                 <rect key="frame" x="8" y="40" width="65" height="47"/>
@@ -421,7 +421,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0DQ-rm-ryI">
-                                        <rect key="frame" x="0.0" y="389" width="560" height="91"/>
+                                        <rect key="frame" x="0.0" y="403" width="560" height="95"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c32-5T-G0M">
                                                 <rect key="frame" x="8" y="40" width="65" height="47"/>
@@ -481,7 +481,7 @@
                         <constraints>
                             <constraint firstItem="Mny-KX-eu4" firstAttribute="top" secondItem="GHz-mS-kc8" secondAttribute="bottom" constant="20" id="JH5-2p-VUV"/>
                             <constraint firstItem="bxQ-82-e9M" firstAttribute="leading" secondItem="mrp-Qy-JnX" secondAttribute="leadingMargin" id="P1p-6m-JUs"/>
-                            <constraint firstItem="GHz-mS-kc8" firstAttribute="height" secondItem="mrp-Qy-JnX" secondAttribute="height" multiplier="0.8" id="iaI-I5-h8G"/>
+                            <constraint firstItem="GHz-mS-kc8" firstAttribute="height" secondItem="mrp-Qy-JnX" secondAttribute="height" multiplier="0.83" id="iaI-I5-h8G"/>
                             <constraint firstItem="bxQ-82-e9M" firstAttribute="top" secondItem="BTv-Qc-HvY" secondAttribute="bottom" constant="8" id="nTL-iK-t4c"/>
                             <constraint firstItem="GHz-mS-kc8" firstAttribute="leading" secondItem="mrp-Qy-JnX" secondAttribute="leadingMargin" id="w3d-c0-qCf"/>
                             <constraint firstItem="GHz-mS-kc8" firstAttribute="trailing" secondItem="mrp-Qy-JnX" secondAttribute="trailingMargin" id="wgB-B2-oo7"/>

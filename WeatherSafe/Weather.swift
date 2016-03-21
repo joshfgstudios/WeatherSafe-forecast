@@ -26,22 +26,27 @@ class Weather {
     private var _UNIXDay1: Double!
     private var _day1Max: String!
     private var _day1Min: String!
+    private var _day1Icon: String!
     
     private var _UNIXDay2: Double!
     private var _day2Max: String!
     private var _day2Min: String!
+    private var _day2Icon: String!
     
     private var _UNIXDay3: Double!
     private var _day3Max: String!
     private var _day3Min: String!
+    private var _day3Icon: String!
     
     private var _UNIXDay4: Double!
     private var _day4Max: String!
     private var _day4Min: String!
+    private var _day4Icon: String!
     
     private var _UNIXDay5: Double!
     private var _day5Max: String!
     private var _day5Min: String!
+    private var _day5Icon: String!
     
     var currentTemp: String {
 
