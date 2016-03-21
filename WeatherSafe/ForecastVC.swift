@@ -112,7 +112,7 @@ class ForecastVC: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        UIView.animateWithDuration(0.5, delay: 0.1, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.constrLeadingStack.constant -= 120
             self.constrLeadingBack.constant -= 120
             self.lblDay1.alpha = 1.0
@@ -130,12 +130,15 @@ class ForecastVC: UIViewController {
             self.lblDay3Max.alpha = 1.0
             self.lblDay4Max.alpha = 1.0
             self.lblDay5Max.alpha = 1.0
+            self.btnBack.alpha = 1.0
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(0.8, delay: 0.3, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.imgDay1.alpha = 1.0
             self.imgDay2.alpha = 1.0
             self.imgDay3.alpha = 1.0
             self.imgDay4.alpha = 1.0
             self.imgDay5.alpha = 1.0
-            self.btnBack.alpha = 1.0
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
