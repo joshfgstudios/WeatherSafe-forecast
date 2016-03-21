@@ -13,7 +13,9 @@ extension NSDate {
     func dayOfWeek() -> String? {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        return dateFormatter.stringFromDate(self)
+        let fullDate = dateFormatter.stringFromDate(self)
+        let splitDate = fullDate.componentsSeparatedByString(",")
+        return splitDate[0]
     }
     
 }
