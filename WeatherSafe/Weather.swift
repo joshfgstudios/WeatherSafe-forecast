@@ -153,6 +153,13 @@ class Weather {
         return _day1Min
     }
     
+    var day1Icon: String {
+        if _day1Icon == nil {
+            _day1Icon = "partly-cloudy-day"
+        }
+        return _day1Icon
+    }
+    
     var UNIXDay2: Double {
         if _UNIXDay2 == nil {
             _UNIXDay2 = 0
@@ -175,6 +182,13 @@ class Weather {
         }
         
         return _day2Min
+    }
+    
+    var day2Icon: String {
+        if _day2Icon == nil {
+            _day2Icon = "partly-cloudy-day"
+        }
+        return _day2Icon
     }
     
     var UNIXDay3: Double {
@@ -201,6 +215,13 @@ class Weather {
         return _day3Min
     }
     
+    var day3Icon: String {
+        if _day3Icon == nil {
+            _day3Icon = "partly-cloudy-day"
+        }
+        return _day3Icon
+    }
+    
     var UNIXDay4: Double {
         if _UNIXDay4 == nil {
             _UNIXDay4 = 0
@@ -225,6 +246,13 @@ class Weather {
         return _day4Min
     }
     
+    var day4Icon: String {
+        if _day4Icon == nil {
+            _day4Icon = "partly-cloudy-day"
+        }
+        return _day4Icon
+    }
+    
     var UNIXDay5: Double {
         if _UNIXDay5 == nil {
             _UNIXDay5 = 0
@@ -247,6 +275,13 @@ class Weather {
         }
         
         return _day5Min
+    }
+    
+    var day5Icon: String {
+        if _day5Icon == nil {
+            _day5Icon = "partly-cloudy-day"
+        }
+        return _day5Icon
     }
     
     func setRequestURL() {
@@ -328,6 +363,10 @@ class Weather {
                             self._day1Min = "\(day1Min)"
                         }
                         
+                        if let day1Icon = data[1]["icon"] as? String {
+                            self._day1Icon = day1Icon
+                        }
+                        
                         if let day2Date = data[2]["time"] as? Double {
                             self._UNIXDay2 = day2Date
                         }
@@ -338,6 +377,10 @@ class Weather {
                         
                         if let day2Min = data[2]["temperatureMin"] as? Int {
                             self._day2Min = "\(day2Min)"
+                        }
+                        
+                        if let day2Icon = data[2]["icon"] as? String {
+                            self._day2Icon = day2Icon
                         }
                         
                         if let day3Date = data[3]["time"] as? Double {
@@ -352,6 +395,10 @@ class Weather {
                             self._day3Min = "\(day3Min)"
                         }
                         
+                        if let day3Icon = data[3]["icon"] as? String {
+                            self._day3Icon = day3Icon
+                        }
+                        
                         if let day4Date = data[4]["time"] as? Double {
                             self._UNIXDay4 = day4Date
                         }
@@ -364,6 +411,10 @@ class Weather {
                             self._day4Min = "\(day4Min)"
                         }
                         
+                        if let day4Icon = data[4]["icon"] as? String {
+                            self._day4Icon = day4Icon
+                        }
+                        
                         if let day5Date = data[5]["time"] as? Double {
                             self._UNIXDay5 = day5Date
                         }
@@ -374,6 +425,10 @@ class Weather {
                         
                         if let day5Min = data[5]["temperatureMin"] as? Int {
                             self._day5Min = "\(day5Min)"
+                        }
+                        
+                        if let day5Icon = data[5]["icon"] as? String {
+                            self._day5Icon = day5Icon
                         }
                     }
                 }
