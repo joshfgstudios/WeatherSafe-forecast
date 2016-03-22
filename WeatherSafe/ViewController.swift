@@ -54,10 +54,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshData", name: "unitsChanged", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshBackgroundColours", name: "returningFromForecast", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshData), name: "unitsChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshBackgroundColours), name: "returningFromForecast", object: nil)
         
-        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeToForecast")
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeToForecast))
         swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeGestureRecognizer)
     }
@@ -173,7 +173,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         weather.downloadWeatherDetails { () -> () in
             self.updateUI()
             self.refreshBackgroundColours()
-            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "loadingComplete", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(self.loadingComplete), userInfo: nil, repeats: false)
         }
         
     }

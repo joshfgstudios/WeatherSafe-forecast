@@ -51,7 +51,7 @@ class ForecastVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "returnToMain")
+        let backGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(returnToMain))
         backGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(backGestureRecognizer)
     }
